@@ -1,0 +1,120 @@
+---
+import data from '../data/business.json';
+import '../styles/global.css';
+
+const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+const todayHours = data.hours[today as keyof typeof data.hours] ?? '';
+const isOpen = todayHours !== 'Closed';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{data.name} | {data.marketplace}</title>
+    <meta name="description" content={`${data.name} — ${data.tagline}. Located at booth ${data.booth} in ${data.marketplace}.`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  </head>
+
+  <body class="bg-stone-50 text-stone-800 antialiased">
+
+    <!-- Hero -->
+    <header class="bg-stone-900 text-white">
+      <div class="max-w-4xl mx-auto px-6 py-20 text-center">
+        <p class="text-sm uppercase tracking-[0.25em] text-stone-400 mb-4 font-[Inter]">{data.marketplace} &middot; Booth {data.booth}</p>
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight font-[Playfair_Display]">{data.name}</h1>
+        <p class="mt-4 text-lg text-stone-300 font-[Inter]">{data.tagline}</p>
+        <div class="mt-6">
+          {isOpen ? (
+            <span class="inline-flex items-center gap-2 bg-emerald-900/40 text-emerald-300 text-sm font-medium px-4 py-2 rounded-full font-[Inter]">
+              <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
+              Open today: {todayHours}
+            </span>
+          ) : (
+            <span class="inline-flex items-center gap-2 bg-red-900/30 text-red-300 text-sm font-medium px-4 py-2 rounded-full font-[Inter]">
+              <span class="w-2 h-2 bg-red-400 rounded-full"></span>
+              Closed today
+            </span>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-16 font-[Inter]">
+
+      <!-- Services -->
+      <section class="mb-16">
+        <h2 class="text-xs uppercase tracking-[0.2em] text-stone-400 font-semibold mb-8">Services</h2>
+        <div class="grid sm:grid-cols-2 gap-6">
+          {data.services.map((service) => (
+            <div class="bg-white border border-stone-200 rounded-lg p-6">
+              <h3 class="font-semibold text-lg mb-1">{service.title}</h3>
+              <p class="text-stone-500 text-sm leading-relaxed">{service.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Hours -->
+      <section class="mb-16">
+        <h2 class="text-xs uppercase tracking-[0.2em] text-stone-400 font-semibold mb-8">Hours</h2>
+        <div class="bg-white border border-stone-200 rounded-lg divide-y divide-stone-100">
+          {Object.entries(data.hours).map(([day, time]) => (
+            <div class:list={[
+              "flex justify-between px-6 py-4 text-sm",
+              day === today && "bg-stone-50 font-semibold",
+            ]}>
+              <span class={day === today ? "text-stone-900" : "text-stone-500"}>{day}</span>
+              <span class={time === 'Closed' ? 'text-red-500' : 'text-stone-800'}>{time}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="mb-16">
+        <h2 class="text-xs uppercase tracking-[0.2em] text-stone-400 font-semibold mb-8">Visit Us</h2>
+        <div class="bg-white border border-stone-200 rounded-lg p-6 sm:p-8">
+          <div class="grid sm:grid-cols-2 gap-8">
+            <div>
+              <p class="text-sm text-stone-400 mb-1">Location</p>
+              <p class="font-medium">{data.marketplace}</p>
+              <p class="text-stone-600 text-sm">Booth {data.booth}</p>
+              <p class="text-stone-600 text-sm mt-1">{data.address}</p>
+            </div>
+            <div>
+              <p class="text-sm text-stone-400 mb-1">Phone</p>
+              <p class="font-medium">{data.phone}</p>
+            </div>
+          </div>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a
+              href={`tel:${data.phone.replace(/[^0-9]/g, '')}`}
+              class="flex-1 text-center bg-stone-900 text-white py-3 px-6 rounded-lg font-medium text-sm hover:bg-stone-800 transition-colors"
+            >
+              Call Now
+            </a>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 text-center border border-stone-300 text-stone-700 py-3 px-6 rounded-lg font-medium text-sm hover:bg-stone-100 transition-colors"
+            >
+              Get Directions
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-stone-200 bg-white">
+      <div class="max-w-4xl mx-auto px-6 py-8 text-center text-sm text-stone-400">
+        <p>&copy; {new Date().getFullYear()} {data.name}. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "Diana's Embroidery",
+  "tagline": "Custom embroidery for every occasion",
+  "booth": "H-05-07",
+  "marketplace": "Anaheim Indoor Marketplace",
+  "address": "1440 S Anaheim Blvd, Anaheim, CA 92805",
+  "phone": "(714) 999-0888",
+  "hours": {
+    "Monday": "10:00 AM - 7:00 PM",
+    "Tuesday": "Closed",
+    "Wednesday": "10:00 AM - 7:00 PM",
+    "Thursday": "10:00 AM - 7:00 PM",
+    "Friday": "10:00 AM - 7:00 PM",
+    "Saturday": "10:00 AM - 7:00 PM",
+    "Sunday": "10:00 AM - 7:00 PM"
+  },
+  "services": [
+    {
+      "title": "Custom Embroidery",
+      "description": "Personalized designs on garments, hats, bags, and more"
+    },
+    {
+      "title": "Name & Monogram Stitching",
+      "description": "Professional lettering for uniforms, gifts, and personal items"
+    },
+    {
+      "title": "Patches & Logos",
+      "description": "Custom patches and business logo embroidery"
+    },
+    {
+      "title": "Alterations & Repairs",
+      "description": "Clothing alterations and embroidery repair services"
+    }
+  ]
+}
