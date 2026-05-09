@@ -1,5 +1,5 @@
 {
-  "name": "Diana's Embroidery",
+  "name": "Diana Embroidery",
   "tagline": "Custom embroidery for every occasion",
   "booth": "H-05-07",
   "marketplace": "Anaheim Indoor Marketplace",
@@ -16,20 +16,20 @@
   },
   "services": [
     {
-      "title": "Custom Embroidery",
-      "description": "Personalized designs on garments, hats, bags, and more"
+      "title": "Custom Logo Embroidery",
+      "description": "Your company logo embroidered on apparel — lowest prices, done while you wait."
     },
     {
-      "title": "Name & Monogram Stitching",
-      "description": "Professional lettering for uniforms, gifts, and personal items"
+      "title": "Digitizing",
+      "description": "We turn your artwork into stitch-ready files at unbeatable rates."
     },
     {
-      "title": "Patches & Logos",
-      "description": "Custom patches and business logo embroidery"
+      "title": "Garments & Apparel",
+      "description": "We embroider hats, jackets, aprons, towels, t-shirts and more — choose from major brands or bring your own."
     },
     {
-      "title": "Alterations & Repairs",
-      "description": "Clothing alterations and embroidery repair services"
+      "title": "Heat Press",
+      "description": "Logos, names, and custom graphics heat-pressed onto a wide range of garments."
     }
   ]
 }
